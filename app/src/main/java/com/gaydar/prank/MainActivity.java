@@ -86,7 +86,7 @@ public class MainActivity extends Activity implements TextureView.SurfaceTexture
         root.addView(header,anchor(-1,-2,Gravity.TOP,24));
         status=text("PRANK MODE · RANDOM FICTION",11,CYAN);status.setGravity(Gravity.CENTER);
         FrameLayout.LayoutParams sp=anchor(-1,-2,Gravity.TOP,24);sp.topMargin=dp(86);root.addView(status,sp);
-        controls=new LinearLayout(this);controls.setOrientation(1);controls.setGravity(Gravity.CENTER);
+        controls=new LinearLayout(this);controls.setOrientation(LinearLayout.VERTICAL);controls.setGravity(Gravity.CENTER);
         TextView hint=text("Make up your alter ego",18,Color.WHITE);hint.setGravity(Gravity.CENTER);controls.addView(hint);
         LinearLayout row=new LinearLayout(this);row.setGravity(Gravity.CENTER);row.setPadding(0,dp(24),0,dp(22));
         row.addView(button("Photos",false,this::pickPhoto),new LinearLayout.LayoutParams(dp(88),dp(52)));
@@ -97,13 +97,13 @@ public class MainActivity extends Activity implements TextureView.SurfaceTexture
         TextView foot=text("Consenting adults only · Photos stay on device",11,MUTED);foot.setGravity(Gravity.CENTER);controls.addView(foot);
         root.addView(controls,anchor(-1,-2,Gravity.BOTTOM,18));
         results=new ScrollView(this);results.setVisibility(View.GONE);
-        panel=new LinearLayout(this);panel.setOrientation(1);panel.setPadding(dp(22),dp(22),dp(22),dp(18));panel.setBackground(surface(0xF0080D12,0xFF46545E,30));
+        panel=new LinearLayout(this);panel.setOrientation(LinearLayout.VERTICAL);panel.setPadding(dp(22),dp(22),dp(22),dp(18));panel.setBackground(surface(0xF0080D12,0xFF46545E,30));
         TextView fiction=text("✦  RANDOM FICTION",12,CYAN);fiction.setGravity(Gravity.CENTER);panel.addView(fiction);
         persona=text("",32,Color.WHITE);persona.setGravity(Gravity.CENTER);persona.setAllCaps(true);persona.setPadding(0,dp(16),0,dp(8));panel.addView(persona);
         tagline=text("",13,MUTED);tagline.setGravity(Gravity.CENTER);panel.addView(tagline);
         LinearLayout stats=new LinearLayout(this);stats.setPadding(0,dp(22),0,dp(22));
-        LinearLayout ec=new LinearLayout(this);ec.setOrientation(1);ec.addView(text("ϟ  BIG ENERGY",10,MUTED));energy=text("",26,CYAN);ec.addView(energy);stats.addView(ec,new LinearLayout.LayoutParams(0,-2,1));
-        LinearLayout wc=new LinearLayout(this);wc.setOrientation(1);wc.addView(text("✦  FANTASY WILDCARD",10,MUTED));wildcard=text("",18,Color.WHITE);wc.addView(wildcard);stats.addView(wc,new LinearLayout.LayoutParams(0,-2,1));panel.addView(stats);
+        LinearLayout ec=new LinearLayout(this);ec.setOrientation(LinearLayout.VERTICAL);ec.addView(text("ϟ  BIG ENERGY",10,MUTED));energy=text("",26,CYAN);ec.addView(energy);stats.addView(ec,new LinearLayout.LayoutParams(0,-2,1));
+        LinearLayout wc=new LinearLayout(this);wc.setOrientation(LinearLayout.VERTICAL);wc.addView(text("✦  FANTASY WILDCARD",10,MUTED));wildcard=text("",18,Color.WHITE);wc.addView(wildcard);stats.addView(wc,new LinearLayout.LayoutParams(0,-2,1));panel.addView(stats);
         addButton(button("⚄  Reroll",true,this::showResult));
         LinearLayout exports=new LinearLayout(this);LinearLayout.LayoutParams half=new LinearLayout.LayoutParams(0,-2,1);half.setMargins(0,0,dp(8),0);
         exports.addView(button("Save card",false,()->exportCard(false)),half);exports.addView(button("Share",false,()->exportCard(true)),new LinearLayout.LayoutParams(0,-2,1));panel.addView(exports);
@@ -230,3 +230,4 @@ public class MainActivity extends Activity implements TextureView.SurfaceTexture
         }
     }
 }
+
