@@ -1,40 +1,73 @@
-# gaydar · Android
+# gaydar
 
-An offline, adults-only camera comedy toy with cyan radar graphics, pink controls, and random fictional alter egos. No photo analysis or real assessments.
+**The universe has a type.** An Android camera prank for consenting adults, with neon radar visuals and randomly generated fictional alter egos. Psychology, face feng shui, and divine messages are the parody premise—not real analysis.
+
+[Download the Android APK](https://raw.githubusercontent.com/Averydimbulb79/Gaydar/5d8001f5517b523d21452e9b0752a033d1854672/docs/assets/gaydar-v0.1.0.apk) · [Landing-page source](https://github.com/Averydimbulb79/Gaydar/tree/codex/android-app/docs) · [App and website pull request](https://github.com/Averydimbulb79/Gaydar/pull/1)
+
+## Project status
+
+The Android app, landing page, artwork, and bundled APK are on `codex/android-app`, in PR #1. The app compiles and has passed unit tests and Android lint. Physical-phone testing remains necessary. The APK is a v0.1.0 debug test build, not a Google Play release.
+
+**GitHub Pages hosting has not been configured by this project setup.** Uploading HTML to GitHub does not publish a website automatically. The repository owner must select a Pages publishing source. The private Sites preview is separate from GitHub Pages.
+
+## Publish the landing page on GitHub Pages
+
+1. Open [Settings → Pages](https://github.com/Averydimbulb79/Gaydar/settings/pages) while signed into the repository owner's GitHub account.
+2. Under **Build and deployment**, choose **Deploy from a branch**.
+3. Select **codex/android-app**, choose **/docs**, and click **Save**. This publishes the existing page without requiring the app pull request to be merged first.
+4. Wait for GitHub's Pages deployment to finish. GitHub will display the live address in those settings.
+5. After merging PR #1, change the publishing branch to **main**, keeping **/docs**.
+
+The page is buildless HTML/CSS/JavaScript. Its relative asset and APK links work under the repository's Pages path. Once hosted publicly, visitors can download the bundled APK without signing into GitHub.
+
+## Install the Android app
+
+Requires **Android 10 or newer** and adult participants aged **18+**.
+
+1. Download the APK using the link above on your Android phone.
+2. Open the downloaded file. If Android prompts, allow installation from the browser or file manager you used.
+3. Install and open gaydar, then review the adult/participant consent prompt. Camera access is optional; photo import is available.
+
+Only install this test build if you trust its source. You can turn off the installation permission afterward. The bundled file's SHA-256 is `670023df609f000f890efa37d65d71b5d29406e545354f8e3d4e73cca7c4a90b`.
+
+Fresh build artifacts are also available from successful runs of [Android APK](https://github.com/Averydimbulb79/Gaydar/actions): unzip `gaydar-debug-apk` and open `app-debug.apk`.
 
 ## Features
 
 - Live camera, front/back switch, and system photo import.
-- Theatrical scan and 120 unique personas (30 descriptors × 4 roles), with no immediate repeat.
-- Fictional Big Energy score and Fantasy Wildcard, independent of the image.
-- Reroll, retake, save JPEG to Pictures/Gaydar, and Android share sheet. Sharing also saves the card to Pictures/Gaydar.
-- Adult/participant consent gate on every app launch. Fiction labels are embedded in exported cards.
-- No network permission, analytics, accounts, or uploads. Unsaved photos remain in memory. Portrait orientation; sessions reset if Android kills the process.
+- Futuristic scan animation and 120 fictional personas: 30 descriptors across top, bottom, flex, and side, without immediate repeats.
+- Random Big Energy scores and Fantasy Wildcards, generated independently of photos.
+- Reroll, retake, save JPEG cards, and share through Android.
+- Permanent fiction labels on exported cards.
+- Responsive landing page with a random-persona demo, direct APK download, installation instructions, and privacy information. The artwork is labeled as an interface concept.
 
-## Install an APK
+## Privacy and consent
 
-Open **Actions → Android APK → a successful run → Artifacts → gaydar-debug-apk**. Download and unzip the artifact, then open `app-debug.apk` on an Android 10+ device. Allow installation from your file manager when Android prompts. This debug build is for testing.
+Nothing about a person's sexuality, anatomy, or preferences is inferred from their picture. Every result is made up for entertainment.
 
-## Build locally
+Everyone pictured must be 18+ and agree to participate. Keep fiction labels visible, and get permission before sharing a card. The app has no network permission, accounts, analytics, or uploads. Unsaved photos stay in memory for the session. Saving or sharing writes a card to `Pictures/Gaydar`; sharing then opens Android's share sheet.
 
-Requires JDK 17, Android SDK 35, and Gradle 8.9. Open the project in Android Studio or install Gradle 8.9 and run:
+## Source and local development
+
+Check out `codex/android-app` until PR #1 is merged. The Android project is at the repository root. The static website is in `docs/`, and the downloadable APK is in `docs/assets/`.
+
+Android builds require **JDK 17**, **Android SDK 35**, and **Gradle 8.9**:
 
 ```shell
 gradle testDebugUnitTest lintDebug assembleDebug bundleRelease
 ```
 
-CI pins Gradle 8.9; no Gradle wrapper is checked in yet. APK: `app/build/outputs/apk/debug/app-debug.apk`. Unsigned store bundle: `app/build/outputs/bundle/release/app-release.aab`. Production signing and store preparation are required before publication. Never commit signing keys.
+CI pins Gradle 8.9; no Gradle wrapper is checked in yet. Outputs:
 
-## Landing page
+- Test APK: `app/build/outputs/apk/debug/app-debug.apk`
+- Unsigned store bundle: `app/build/outputs/bundle/release/app-release.aab`
 
-The complete landing page is in `docs/`: `index.html`, `style.css`, `app.js`, and `assets/`. The APK download is bundled at `docs/assets/gaydar-v0.1.0.apk`, so visitors do not need a GitHub account to download it when the page is hosted. It is the verified v0.1.0 debug build, with SHA-256 `670023df609f000f890efa37d65d71b5d29406e545354f8e3d4e73cca7c4a90b`.
+Production signing and store preparation are required before publication. Never commit signing keys.
 
-To preview, serve `docs/` with any static web server. No build step is required. To publish on GitHub Pages after merging this pull request, go to **Settings → Pages**, choose **Deploy from a branch**, select **main** and **/docs**, and save. GitHub will show the published URL after deployment. Until Pages is configured, the files are available as repository source.
-
-When updating the Android app, replace the bundled APK with the verified new build and update the landing-page version labels and download links. The page mockup is labeled as an interface concept.
+To preview the landing page, serve `docs/` with any static web server; no dependency installation or build is needed. When updating the downloadable APK, replace the verified file and update version labels, links, and its checksum.
 
 ## Validation
 
-Tests check catalog uniqueness, role distribution, energy ranges, and reroll behavior. CI runs tests, Android lint, debug APK assembly, and unsigned release bundle assembly.
+Android tests cover persona uniqueness, role distribution, energy ranges, and reroll behavior. CI runs those tests, Android lint, APK assembly, and unsigned bundle assembly. Landing-page desktop/mobile layouts, its random demo, installation disclosure, local asset links, JavaScript syntax, and APK download/checksum were checked.
 
-Physical-device checklist: consent accept/decline; deny/grant camera; rear/front preview and capture; import rotated/large images; cancel picker; background/resume during scan; reroll/retake; save/share with fiction label; small display and large system font. Camera capture uses the viewfinder resolution. No image recognition is present.
+Before an app release, test consent accept/decline, camera permissions, front/rear capture, rotated and large imports, picker cancellation, background/resume during scanning, reroll/retake, saving/sharing, small displays, and large system fonts on physical devices. Camera captures currently use viewfinder resolution. Sessions reset if Android kills the process.
