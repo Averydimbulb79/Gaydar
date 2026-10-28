@@ -25,6 +25,14 @@ gradle testDebugUnitTest lintDebug assembleDebug bundleRelease
 
 CI pins Gradle 8.9; no Gradle wrapper is checked in yet. APK: `app/build/outputs/apk/debug/app-debug.apk`. Unsigned store bundle: `app/build/outputs/bundle/release/app-release.aab`. Production signing and store preparation are required before publication. Never commit signing keys.
 
+## Landing page
+
+The complete landing page is in `docs/`: `index.html`, `style.css`, `app.js`, and `assets/`. The APK download is bundled at `docs/assets/gaydar-v0.1.0.apk`, so visitors do not need a GitHub account to download it when the page is hosted. It is the verified v0.1.0 debug build, with SHA-256 `670023df609f000f890efa37d65d71b5d29406e545354f8e3d4e73cca7c4a90b`.
+
+To preview, serve `docs/` with any static web server. No build step is required. To publish on GitHub Pages after merging this pull request, go to **Settings → Pages**, choose **Deploy from a branch**, select **main** and **/docs**, and save. GitHub will show the published URL after deployment. Until Pages is configured, the files are available as repository source.
+
+When updating the Android app, replace the bundled APK with the verified new build and update the landing-page version labels and download links. The page mockup is labeled as an interface concept.
+
 ## Validation
 
 Tests check catalog uniqueness, role distribution, energy ranges, and reroll behavior. CI runs tests, Android lint, debug APK assembly, and unsigned release bundle assembly.
