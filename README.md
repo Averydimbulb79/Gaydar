@@ -8,13 +8,13 @@
 
 The Android app, landing page, artwork, and bundled APK are on `codex/android-app`, in PR #1. The app compiles and has passed unit tests and Android lint. Physical-phone testing remains necessary. The APK is a v0.1.0 debug test build, not a Google Play release.
 
-**GitHub Pages hosting has not been configured by this project setup.** Uploading HTML to GitHub does not publish a website automatically. The repository owner must select a Pages publishing source. The private Sites preview is separate from GitHub Pages.
+**Landing page:** [averydimbulb79.github.io/Gaydar](https://averydimbulb79.github.io/Gaydar/). GitHub Pages is configured to publish the `/docs` folder from `codex/android-app`. Updates to that folder trigger a Pages deployment. The private Sites preview is separate.
 
-## Publish the landing page on GitHub Pages
+## GitHub Pages hosting
 
 1. Open [Settings → Pages](https://github.com/Averydimbulb79/Gaydar/settings/pages) while signed into the repository owner's GitHub account.
 2. Under **Build and deployment**, choose **Deploy from a branch**.
-3. Select **codex/android-app**, choose **/docs**, and click **Save**. This publishes the existing page without requiring the app pull request to be merged first.
+3. The configured source is **codex/android-app** and **/docs**. Keep **/docs** selected: the repository root contains the README, not the landing page.
 4. Wait for GitHub's Pages deployment to finish. GitHub will display the live address in those settings.
 5. After merging PR #1, change the publishing branch to **main**, keeping **/docs**.
 
